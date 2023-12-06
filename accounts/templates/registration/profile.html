@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <div class="container" style="max-width: 1200px; margin: 20px auto; padding: 20px;">
+    <h2 class="text-black text-center">Your Profile</h2>
+    <form method="post">
+      {% csrf_token %}
+      <div class="card custom-bg mb-3"> <!-- Apply the custom background class -->
+        <div class="card-body">
+          {{ form.as_p }}
+          <button class="btn btn-primary" type="submit">Update Profile</button>
+          <a href="{% url 'change_password' %}" class="btn btn-secondary">Change Password</a>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

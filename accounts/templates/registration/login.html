@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <div class="container" style="max-width: 1200px; margin: 20px auto; padding: 20px;">
+    <h2 class="text-black text-center">Login</h2>
+    <form method="post">
+      {% csrf_token %}
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="card custom-bg mb-3">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+          </div>
+          <button class="btn btn-primary" type="submit">Login</button>
+        </div>
+      </div>
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}" class="text-primary">Register</a></p>
+  </div>
+{% endblock %}

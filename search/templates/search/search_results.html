@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+  <div class="container" style="max-width: 1200px; margin: 20px auto; padding: 20px;">
+    {% if items %}
+      <h2 class="text-black text-center">Search Results</h2>
+      <ul class="list-group custom-bg"> <!-- Apply the custom background class -->
+        {% for item in items %}
+          <li class="list-group-item d-flex justify-content-between align-items-center rounded mb-3">
+            <div class="media">
+              <img src="{{ item.image.url }}" alt="{{ item.name }} Image" style="max-width: 100px;">
+              <div class="media-body">
+                <h5 class="mt-0">{{ item.name }}</h5>
+                <p>{{ item.characteristic }}</p>
+                <p>Description: {{ item.description }}</p> <!-- Include the description here -->
+              </div>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No results found.</p>
+    {% endif %}
+  </div>
+{% endblock %}

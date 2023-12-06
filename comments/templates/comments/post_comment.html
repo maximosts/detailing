@@ -1,0 +1,6 @@
+<!-- comments/templates/comments/post_comment.html -->
+
+<form method="post" action="{% url 'main:delete_comment' comment.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete Comment</button>
+</form>
